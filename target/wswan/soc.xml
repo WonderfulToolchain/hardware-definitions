@@ -2,7 +2,7 @@
 <section name="WS">
 	<comment>System control I/O ports</comment>
 	<port name="SYSTEM_CTRL_COLOR" address="0x60" width="1">
-		<bit name="CART_CLOCK_FAST" offset="0">
+		<bit name="CART_FAST_CLOCK" offset="0">
 			<comment>Enable fast (6 MHz) cartridge clock.</comment>
 		</bit>
 		<bit name="SRAM_WAIT" offset="1">
@@ -25,11 +25,11 @@
 				<comment>Color mode (4 bits per pixel, packed/chunky).</comment>
 			</value>
 		</enum>
-		<bit name="COLOR" offset="7">
+		<bit name="FEAT_COLOR" offset="7">
 		</bit>
-		<bit name="4BPP" offset="6">
+		<bit name="FEAT_4BPP" offset="6">
 		</bit>
-		<bit name="PACKED" offset="5">
+		<bit name="FEAT_PACKED" offset="5">
 		</bit>
 	</port>
 	<port name="SYSTEM_CTRL_COLOR2" address="0x62" width="1">
@@ -49,7 +49,7 @@
 		<bit name="ROM_16BIT" offset="2">
 			<comment>Use 16-bit bus for cartridge ROM transfers.</comment>
 		</bit>
-		<bit name="COLOR" offset="1">
+		<bit name="MODEL_COLOR" offset="1">
 			<comment>Console is a color model (WSC/SC).</comment>
 		</bit>
 		<bit name="IPL_LOCK" offset="0">

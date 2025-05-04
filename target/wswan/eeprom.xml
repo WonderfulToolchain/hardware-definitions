@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Internal EEPROM I/O ports</comment>
+
+	<port name="IEEP_DATA" address="0xBA" width="2">
+		<comment>Internal EEPROM data.</comment>
+	</port>
+	<port name="IEEP_COMMAND" address="0xBC" width="2">
+		<comment>Internal EEPROM command.</comment>
+	</port>
+	<port name="IEEP_CTRL" address="0xBE" width="1">
+		<bit name="PROTECT" offset="7">
+			<comment>Protect the internal EEPROM's non-user area (bytes 0x60 onward) from being written to.</comment>
+		</bit>
+		<bit name="ERASE" offset="6">
+			<comment>Send erase command to internal EEPROM.</comment>
+		</bit>
+		<bit name="WRITE" offset="5">
+			<comment>Send write command to internal EEPROM.</comment>
+		</bit>
+		<bit name="READ" offset="4">
+			<comment>Send read command to internal EEPROM.</comment>
+		</bit>
+		<bit name="READY" offset="1">
+			<comment>A new internal EEPROM command can be written to the I/O ports.</comment>
+		</bit>
+		<bit name="DONE" offset="0">
+			<comment>Finished reading out a word from the internal EEPROM.</comment>
+		</bit>
+	</port>
+</section>

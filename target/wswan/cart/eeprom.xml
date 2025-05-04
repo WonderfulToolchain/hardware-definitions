@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Cartridge EEPROM I/O ports</comment>
+
+	<port name="CART_EEP_DATA" address="0xC4" width="2">
+		<comment>Cartridge EEPROM data.</comment>
+	</port>
+	<port name="CART_EEP_COMMAND" address="0xC6" width="2">
+		<comment>Cartridge EEPROM command.</comment>
+	</port>
+	<port name="CART_EEP_CTRL" address="0xC8" width="1">
+		<bit name="ABORT" offset="7">
+			<comment>Abort cartridge EEPROM transfer.</comment>
+		</bit>
+		<bit name="ERASE" offset="6">
+			<comment>Send erase command to cartridge EEPROM.</comment>
+		</bit>
+		<bit name="WRITE" offset="5">
+			<comment>Send write command to cartridge EEPROM.</comment>
+		</bit>
+		<bit name="READ" offset="4">
+			<comment>Send read command to cartridge EEPROM.</comment>
+		</bit>
+		<bit name="READY" offset="1">
+			<comment>A new cartridge EEPROM command can be written to the I/O ports.</comment>
+		</bit>
+		<bit name="DONE" offset="0">
+		</bit>
+	</port>
+</section>

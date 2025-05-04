@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Karnak mapper I/O ports</comment>
+
+	<port name="CART_KARNAK_TIMER_IRQ" address="0xD6" width="1">
+		<bit name="ENABLE" offset="7">
+		</bit>
+	</port>
+	<port name="CART_KARNAK_ADPCM_IN" address="0xD8" width="1">
+	</port>
+	<port name="CART_KARNAK_ADPCM_OUT" address="0xD9" width="1">
+	</port>
+</section>

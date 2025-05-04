@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Interrupt control I/O ports</comment>
+
+	<port name="INT_VECTOR" address="0xB0" width="1">
+		<comment>Currently requested interrupt vector, if any. Bits 3-7 are writable and serve as the vector's offset.</comment>
+	</port>
+	<port name="INT_ENABLE" address="0xB2" width="1">
+		<bit name="UART_TX" offset="0">
+			<comment>UART TX ready.</comment>
+		</bit>
+		<bit name="KEY_SCAN" offset="1">
+			<comment>Key scan column non-zero.</comment>
+		</bit>
+		<bit name="CARTRIDGE" offset="2">
+			<comment>Cartridge IRQ pin.</comment>
+		</bit>
+		<bit name="UART_RX" offset="3">
+			<comment>UART RX ready.</comment>
+		</bit>
+		<bit name="LINE_MATCH" offset="4">
+			<comment>Display line match.</comment>
+		</bit>
+		<bit name="VBL_TIMER" offset="5">
+			<comment>Vertical blank timer.</comment>
+		</bit>
+		<bit name="VBLANK" offset="6">
+			<comment>Vertical blank.</comment>
+		</bit>
+		<bit name="HBL_TIMER" offset="7">
+			<comment>Horizontal blank timer.</comment>
+		</bit>
+	</port>
+	<port name="INT_STATUS" address="0xB4" width="1">
+		<bit name="UART_TX" offset="0">
+			<comment>UART TX ready.</comment>
+		</bit>
+		<bit name="KEY_SCAN" offset="1">
+			<comment>Key scan column non-zero.</comment>
+		</bit>
+		<bit name="CARTRIDGE" offset="2">
+			<comment>Cartridge IRQ pin.</comment>
+		</bit>
+		<bit name="UART_RX" offset="3">
+			<comment>UART RX ready.</comment>
+		</bit>
+		<bit name="LINE_MATCH" offset="4">
+			<comment>Display line match.</comment>
+		</bit>
+		<bit name="VBL_TIMER" offset="5">
+			<comment>Vertical blank timer.</comment>
+		</bit>
+		<bit name="VBLANK" offset="6">
+			<comment>Vertical blank.</comment>
+		</bit>
+		<bit name="HBL_TIMER" offset="7">
+			<comment>Horizontal blank timer.</comment>
+		</bit>
+	</port>
+	<port name="INT_ACK" address="0xB6" width="1">
+		<bit name="UART_TX" offset="0">
+			<comment>UART TX ready.</comment>
+		</bit>
+		<bit name="KEY_SCAN" offset="1">
+			<comment>Key scan column non-zero.</comment>
+		</bit>
+		<bit name="CARTRIDGE" offset="2">
+			<comment>Cartridge IRQ pin.</comment>
+		</bit>
+		<bit name="UART_RX" offset="3">
+			<comment>UART RX ready.</comment>
+		</bit>
+		<bit name="LINE_MATCH" offset="4">
+			<comment>Display line match.</comment>
+		</bit>
+		<bit name="VBL_TIMER" offset="5">
+			<comment>Vertical blank timer.</comment>
+		</bit>
+		<bit name="VBLANK" offset="6">
+			<comment>Vertical blank.</comment>
+		</bit>
+		<bit name="HBL_TIMER" offset="7">
+			<comment>Horizontal blank timer.</comment>
+		</bit>
+	</port>
+
+	<port name="INT_NMI_CTRL" address="0xB7" width="1">
+		<comment>Controls NMI (non-maskable interrupt) functionality.</comment>
+		<bit name="LOW_BATTERY" offset="4">
+			<comment>Trigger a non-maskable interrupt when the battery status is low.</comment>
+		</bit>
+	</port>
+</section>

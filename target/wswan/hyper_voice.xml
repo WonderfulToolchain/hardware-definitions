@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Hyper Voice I/O ports (color-exclusive)</comment>
+	<port name="HYPERV_OUT_L" address="0x64" width="2">
+	</port>
+	<port name="HYPERV_OUT_R" address="0x66" width="2">
+	</port>
+	<port name="HYPERV_CTRL" address="0x6A" width="2">
+		<enum name="VOLUME" offset="0" width="2">
+			<value name="100" value="0">
+			</value>
+			<value name="50" value="1">
+			</value>
+			<value name="25" value="2">
+			</value>
+			<value name="12_5" value="3">
+			</value>
+		</enum>
+		<enum name="EXT" offset="2" width="2">
+			<value name="UNSIGNED" value="0">
+			</value>
+			<value name="UNSIGNED_NEGATE" value="1">
+			</value>
+			<value name="SIGNED" value="2">
+			</value>
+			<value name="IGNORE" value="3">
+			</value>
+		</enum>
+		<enum name="RATE" offset="4" width="3">
+			<value name="24000" value="0">
+			</value>
+			<value name="12000" value="1">
+			</value>
+			<value name="8000" value="2">
+			</value>
+			<value name="6000" value="3">
+			</value>
+			<value name="4800" value="4">
+			</value>
+			<value name="4000" value="5">
+			</value>
+			<value name="3000" value="6">
+			</value>
+			<value name="2000" value="7">
+			</value>
+		</enum>		
+		<bit name="ENABLE" offset="7">
+		</bit>
+		<bit name="RESET" offset="12">
+		</bit>
+		<enum name="TARGET" offset="13" width="2">
+			<value name="STEREO" value="0">
+			</value>
+			<value name="LEFT" value="1">
+			</value>
+			<value name="RIGHT" value="2">
+			</value>
+			<value name="MONO" value="3">
+			</value>
+		</enum>
+	</port>
+</section>

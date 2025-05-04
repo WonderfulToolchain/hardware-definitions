@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Cartridge RTC I/O ports</comment>
+
+	<port name="CART_RTC_CTRL" address="0xCA" width="1">
+		<bit name="READ_BIT" offset="0">
+		</bit>
+		<bit name="READY" offset="7">
+		</bit>
+		<bit name="ACTIVE" offset="4">
+		</bit>
+		<enum name="CMD" offset="0" width="5">
+			<value name="RESET" value="0">
+			</value>
+			<value name="WRITE_STATUS" value="2">
+			</value>
+			<value name="READ_STATUS" value="3">
+			</value>
+			<value name="WRITE_DATETIME" value="4">
+			</value>
+			<value name="READ_DATETIME" value="5">
+			</value>
+			<value name="WRITE_TIME" value="6">
+			</value>
+			<value name="READ_TIME" value="7">
+			</value>
+			<value name="WRITE_ALARM" value="8">
+			</value>
+		</enum>
+	</port>
+	<port name="CART_RTC_DATA" address="0xCB" width="1">
+	</port>
+</section>

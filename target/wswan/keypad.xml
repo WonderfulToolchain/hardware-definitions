@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Keypad I/O ports</comment>
+
+	<port name="KEY_SCAN" address="0xB5" width="1">
+		<comment>Controls keypad scanning.</comment>
+
+		<bit name="ROW_BUTTONS" offset="6"/>
+		<bit name="ROW_X" offset="5"/>
+		<bit name="ROW_Y" offset="4"/>
+
+		<bit name="B" offset="3"/>
+		<bit name="X4" offset="3"/>
+		<bit name="Y4" offset="3"/>
+		<bit name="A" offset="2"/>
+		<bit name="X3" offset="2"/>
+		<bit name="Y3" offset="2"/>
+		<bit name="START" offset="1"/>
+		<bit name="X2" offset="1"/>
+		<bit name="Y2" offset="1"/>
+		<bit name="X1" offset="0"/>
+		<bit name="Y1" offset="0"/>
+	</port>
+</section>

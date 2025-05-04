@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Cartridge GPIO I/O ports</comment>
+
+	<port name="CART_GPIO_DIR" address="0xCC" width="1">
+	</port>
+	<port name="CART_GPIO_DATA" address="0xCD" width="1">
+	</port>
+</section>

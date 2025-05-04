@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Timer control I/O ports</comment>
+
+	<port name="TIMER_CTRL" address="0xA2" width="1">
+		<enum name="VBL" offset="2" width="2">
+			<value name="DISABLE" value="0">
+				<comment>Disable vertical blank timer.</comment>
+			</value>
+			<value name="ONESHOT" value="1">
+				<comment>Enable vertical blank timer; trigger once, then stop.</comment>
+			</value>
+			<value name="REPEAT" value="3">
+				<comment>Enable vertical blank timer; repeat continuously.</comment>
+			</value>
+		</enum>
+		<bit name="VBL_REPEAT_BIT" offset="3"/>
+		<bit name="VBL_ENABLE_BIT" offset="2"/>
+		<enum name="HBL" offset="0" width="2">
+			<value name="DISABLE" value="0">
+				<comment>Disable horizontal blank timer.</comment>
+			</value>
+			<value name="ONESHOT" value="1">
+				<comment>Enable horizontal blank timer; trigger once, then stop.</comment>
+			</value>
+			<value name="REPEAT" value="3">
+				<comment>Enable horizontal blank timer; repeat continuously.</comment>
+			</value>
+		</enum>
+		<bit name="HBL_REPEAT_BIT" offset="1"/>
+		<bit name="HBL_ENABLE_BIT" offset="0"/>
+	</port>
+
+	<port name="TIMER_HBL_RELOAD" address="0xA4" width="2">
+		<comment>Reload value for horizontal blank timer.</comment>
+	</port>
+	<port name="TIMER_VBL_RELOAD" address="0xA6" width="2">
+		<comment>Reload value for vertical blank timer.</comment>
+	</port>
+	<port name="TIMER_HBL_COUNTER" address="0xA8" width="2">
+		<comment>Current counter value for horizontal blank timer.</comment>
+	</port>
+	<port name="TIMER_VBL_COUNTER" address="0xAA" width="2">
+		<comment>Current counter value for vertical blank timer.</comment>
+	</port>
+</section>

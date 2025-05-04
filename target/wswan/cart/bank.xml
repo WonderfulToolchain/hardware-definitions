@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Cartridge banking I/O ports</comment>
+
+	<port name="CART_BANK_ROML" address="0xC0" width="1">
+		<comment>Linear ROM (0x40000 - 0xFFFFF) bank address.</comment>
+	</port>
+	<port name="CART_BANK_RAM"  address="0xC1" width="1">
+		<comment>RAM (0x10000 - 0x1FFFF) bank address (up to 16 MiB).</comment>
+	</port>
+	<port name="CART_BANK_ROM0" address="0xC2" width="1">
+		<comment>ROM0 (0x20000 - 0x2FFFF) bank address (up to 16 MiB).</comment>
+	</port>
+	<port name="CART_BANK_ROM1" address="0xC3" width="1">
+		<comment>ROM1 (0x30000 - 0x3FFFF) bank address (up to 16 MiB).</comment>
+	</port>
+
+	<port name="CART_BANK_FLASH" address="0xCE" width="1">
+		<comment>Control ROM/Flash access in RAM bank area.</comment> 
+		<enum offset="1" width="1">
+			<value name="ENABLE" value="1"/>
+			<value name="DISABLE" value="0"/>
+		</enum>
+	</port>
+
+	<port name="CART_BANKEXT_ROML" address="0xCF" width="1">
+		<comment>Linear ROM (0x40000 - 0xFFFFF) bank address.</comment>
+	</port>
+	<port name="CART_BANKEXT_RAM"  address="0xD0" width="2">
+		<comment>RAM (0x10000 - 0x1FFFF) bank address (up to 4 GiB).</comment>
+	</port>
+	<port name="CART_BANKEXT_ROM0" address="0xD2" width="2">
+		<comment>ROM0 (0x20000 - 0x2FFFF) bank address (up to 4 GiB).</comment>
+	</port>
+	<port name="CART_BANKEXT_ROM1" address="0xD4" width="2">
+		<comment>ROM1 (0x30000 - 0x3FFFF) bank address (up to 4 GiB).</comment>
+	</port>
+</section>

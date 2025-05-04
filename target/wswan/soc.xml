@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>System control I/O ports</comment>
+	<port name="SYSTEM_CTRL_COLOR" address="0x60" width="1">
+		<bit name="CART_CLOCK_FAST" offset="0">
+			<comment>Enable fast (6 MHz) cartridge clock.</comment>
+		</bit>
+		<bit name="SRAM_WAIT" offset="1">
+			<comment>Add 1 cycle of wait time to cartridge SRAM transfers.</comment>
+		</bit>
+		<bit name="IO_WAIT" offset="3">
+			<comment>Add 1 cycle of wait time to cartridge I/O transfers.</comment>
+		</bit>
+		<enum name="MODE" offset="5" width="3">
+			<value name="MONO" value="0">
+				<comment>Mono mode (2 bits per pixel, planar).</comment>
+			</value>
+			<value name="COLOR_2BPP" value="4">
+				<comment>Color mode (2 bits per pixel, planar).</comment>
+			</value>
+			<value name="COLOR_4BPP" value="6">
+				<comment>Color mode (4 bits per pixel, planar).</comment>
+			</value>
+			<value name="COLOR_4BPP_PACKED" value="7">
+				<comment>Color mode (4 bits per pixel, packed/chunky).</comment>
+			</value>
+		</enum>
+		<bit name="COLOR" offset="7">
+		</bit>
+		<bit name="4BPP" offset="6">
+		</bit>
+		<bit name="PACKED" offset="5">
+		</bit>
+	</port>
+	<port name="SYSTEM_CTRL_COLOR2" address="0x62" width="1">
+		<bit name="MODEL_CRYSTAL" offset="7">
+			<comment>Console is Crystal model.</comment>
+		</bit>
+		<bit name="REQUEST_POWER_OFF" offset="0">
+		</bit>
+	</port>
+	<port name="SYSTEM_CTRL" address="0xA0" width="1">
+		<bit name="SELF_TEST" offset="7">
+			<comment>Console self-test passed.</comment>
+		</bit>
+		<bit name="ROM_WAIT" offset="3">
+			<comment>Add 1 cycle of wait time to cartridge ROM transfers.</comment>
+		</bit>
+		<bit name="ROM_16BIT" offset="2">
+			<comment>Use 16-bit bus for cartridge ROM transfers.</comment>
+		</bit>
+		<bit name="COLOR" offset="1">
+			<comment>Console is a color model (WSC/SC).</comment>
+		</bit>
+		<bit name="IPL_LOCK" offset="0">
+			<comment>IPL is locked.</comment>
+		</bit>
+	</port>
+	<port name="SYSTEM_TEST" address="0xA3" width="1">
+		<bit name="UART" offset="3"/>
+		<bit name="VBL_TIMER" offset="1"/>
+		<bit name="HBL_TIMER" offset="0"/>
+	</port>
+</section>

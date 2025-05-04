@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>DMA I/O ports (color-exclusive)</comment>
+	<port name="GDMA_SOURCE_L" address="0x40" width="2">
+		<comment>Low 16 bits of the linear GDMA source address.</comment>
+	</port>
+	<port name="GDMA_SOURCE_H" address="0x42" width="1">
+		<comment>High 4 bits of the linear GDMA source address.</comment>
+	</port>
+	<port name="GDMA_DEST" address="0x44" width="2">
+		<comment>Linear GDMA destination address in IRAM.</comment>
+	</port>
+	<port name="GDMA_LENGTH" address="0x46" width="2">
+		<comment>GDMA length, in bytes; must be a multiple of two.</comment>
+	</port>
+	<port name="GDMA_CTRL" address="0x48" width="1">
+		<comment>Control GDMA functionality.</comment>
+		<bit name="START" offset="7">
+			<comment>Start GDMA transfer. This blocks the CPU until the transfer is complete.</comment>
+		</bit>
+		<enum offset="6" width="1">
+			<value name="INC" value="0">
+			</value>
+			<value name="DEC" value="1">
+			</value>
+		</enum>
+	</port>
+	<port name="SDMA_SOURCE_L" address="0x4A" width="2">
+		<comment>Low 16 bits of the linear sound DMA source address.</comment>
+	</port>
+	<port name="SDMA_SOURCE_H" address="0x4C" width="1">
+		<comment>High 4 bits of the linear sound DMA source address.</comment>
+	</port>
+	<port name="SDMA_SOURCE_L" address="0x4E" width="2">
+		<comment>Low 16 bits of the sound DMA transfer length.</comment>
+	</port>
+	<port name="SDMA_SOURCE_H" address="0x50" width="1">
+		<comment>High 4 bits of the sound DMA transfer length.</comment>
+	</port>
+	<port name="SDMA_CTRL" address="0x52" width="1">
+		<bit name="ENABLE" offset="7">
+			<comment>Enable sound DMA transfers. This blocks the CPU for a few cycles per sample fetched.</comment>
+		</bit>
+		<enum offset="6" width="1">
+			<value name="INC" value="0">
+			</value>
+			<value name="DEC" value="1">
+			</value>
+		</enum>
+		<enum name="TARGET" offset="4" width="1">
+			<value name="CH2" value="0">
+				<comment>Transfer samples to channel 2.</comment>
+			</value>
+			<value name="HYPERV" value="1">
+				<comment>Transfer samples to Hyper Voice.</comment>
+			</value>
+		</enum>
+		<enum offset="3" width="1">	
+			<value name="ONESHOT" value="0">
+				<comment>Stop transferring sample data when the transfer is complete.</comment>
+			</value>
+			<value name="REPEAT" value="1">
+				<comment>Restart transferring sample data from the beginning when the transfer is complete.</comment>
+			</value>
+		</enum>
+		<bit name="HOLD" offset="2">
+		</bit>
+		<enum name="RATE" offset="0" width="2">
+			<value name="4000" value="0">
+			</value>
+			<value name="6000" value="1">
+			</value>
+			<value name="12000" value="2">
+			</value>
+			<value name="24000" value="3">
+			</value>
+		</enum>
+	</port>
+</section>

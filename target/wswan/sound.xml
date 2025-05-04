@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Sound I/O ports</comment>
+	<port name="SOUND_FREQ_CH1" address="0x80" width="2">
+	</port>
+	<port name="SOUND_FREQ_CH2" address="0x82" width="2">
+	</port>
+	<port name="SOUND_FREQ_CH3" address="0x84" width="2">
+	</port>
+	<port name="SOUND_FREQ_CH4" address="0x86" width="2">
+	</port>
+	<port name="SOUND_VOL_CH1" address="0x88" width="1">
+	</port>
+	<port name="SOUND_VOL_CH2" address="0x89" width="1">
+	</port>
+	<port name="SOUND_VOL_CH3" address="0x8A" width="1">
+	</port>
+	<port name="SOUND_VOL_CH4" address="0x8B" width="1">
+	</port>
+	<port name="SOUND_SWEEP" address="0x8C" width="1">
+	</port>
+	<port name="SOUND_SWEEP_TIME" address="0x8D" width="1">
+	</port>
+	<port name="SOUND_NOISE_CTRL" address="0x8E" width="1">
+		<enum name="TAP" offset="0" width="3">
+			<value name="14" value="0">
+			</value>
+			<value name="10" value="1">
+			</value>
+			<value name="13" value="2">
+			</value>
+			<value name="4" value="3">
+			</value>
+			<value name="8" value="4">
+			</value>
+			<value name="6" value="5">
+			</value>
+			<value name="9" value="6">
+			</value>
+			<value name="11" value="7">
+			</value>
+		</enum>		
+		<enum name="LENGTH" offset="0" width="3">
+			<value name="32767" value="0">
+			</value>
+			<value name="1953" value="1">
+			</value>
+			<value name="254" value="2">
+			</value>
+			<value name="217" value="3">
+			</value>
+			<value name="73" value="4">
+			</value>
+			<value name="63" value="5">
+			</value>
+			<value name="42" value="6">
+			</value>
+			<value name="28" value="7">
+			</value>
+		</enum>
+		<bit name="RESET" offset="3">
+		</bit>
+		<bit name="ENABLE" offset="4">
+		</bit>
+	</port>
+	<port name="SOUND_WAVE_BASE" address="0x04" width="1">
+		<code language="c">#define WS_SOUND_WAVE_BASE_ADDR(n) (((uint16_t) (n)) &gt;&gt; 6)</code>
+	</port>
+	<port name="SOUND_CH_CTRL" address="0x90" width="1">
+		<bit name="CH1_ENABLE" offset="0"></bit>
+		<bit name="CH2_ENABLE" offset="1"></bit>
+		<bit name="CH3_ENABLE" offset="2"></bit>
+		<bit name="CH4_ENABLE" offset="3"></bit>
+		<bit name="CH2_VOICE" offset="5"></bit>
+		<bit name="CH3_SWEEP" offset="6"></bit>
+		<bit name="CH4_NOISE" offset="7"></bit>
+	</port>
+	<port name="SOUND_OUT_CTRL" address="0x91" width="1">
+		<bit name="HEADPHONE_DETECT" offset="7">
+		</bit>
+		<bit name="HEADPHONE_ENABLE" offset="3">
+		</bit>
+		<bit name="SPEAKER_ENABLE" offset="0">
+		</bit>
+		<enum name="VOLUME" offset="1" width="2">
+			<value name="100" value="0">
+			</value>
+			<value name="50" value="1">
+			</value>
+			<value name="25" value="2">
+			</value>
+			<value name="12_5" value="3">
+			</value>
+		</enum>
+	</port>
+	<port name="SOUND_NOISE_LFSR" address="0x92" width="2">
+	</port>
+	<port name="SOUND_VOL_CH2_VOICE" address="0x94" width="1">
+		<enum name="LEFT" offset="2" width="2">
+			<value name="NONE" value="0">
+			</value>
+			<value name="HALF" value="2">
+			</value>
+			<value name="FULL" value="3">
+			</value>
+		</enum>
+		<enum name="RIGHT" offset="0" width="2">
+			<value name="NONE" value="0">
+			</value>
+			<value name="HALF" value="2">
+			</value>
+			<value name="FULL" value="3">
+			</value>
+		</enum>
+	</port>
+	<port name="SOUND_TEST" address="0x95" width="1">
+		<bit name="HOLD_CH" offset="0"/>
+		<bit name="FAST_SWEEP" offset="1"/>
+	</port>
+	<port name="SOUND_TEST_CHOUT_R" address="0x96" width="2">
+	</port>
+	<port name="SOUND_TEST_CHOUT_L" address="0x98" width="2">
+	</port>
+	<port name="SOUND_TEST_CHOUT_M" address="0x9A" width="2">
+	</port>
+	<port name="SOUND_SPEAKER_VOL" address="0x9E" width="1">
+	</port>
+</section>

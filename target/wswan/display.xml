@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>Display hardware I/O ports</comment>
+	<port name="DISPLAY_CTRL" address="0x00" width="1">
+		<bit name="SCR1_ENABLE" offset="0">
+			<comment>Enable the Screen 1 layer.</comment>
+		</bit>
+		<bit name="SCR2_ENABLE" offset="1">
+			<comment>Enable the Screen 2 layer.</comment>
+		</bit>
+		<bit name="SPR_ENABLE" offset="2">
+			<comment>Enable the sprite layer.</comment>
+		</bit>
+		<bit name="SPR_WIN_ENABLE" offset="3">
+			<comment>Enable the sprite window.</comment>
+		</bit>
+		<enum name="SCR2_WIN" offset="4" width="2">
+			<value name="INSIDE" value="2">
+				<comment>Limit drawing the Screen 2 window to inside its bounds.</comment>
+			</value>
+			<value name="OUTSIDE" value="3">
+				<comment>Limit drawing the Screen 2 window to outside its bounds.</comment>
+			</value>
+		</enum>
+		<bit name="SCR2_WIN_ENABLE_BIT" offset="5"/>
+		<bit name="SCR2_WIN_OUTSIDE_BIT" offset="4"/>
+	</port>
+	<port name="DISPLAY_BACK" address="0x01" width="1">
+		<comment>The display's background shade/color.</comment>
+	</port>
+	<port name="DISPLAY_LINE" address="0x02" width="1">
+		<comment>The current line being drawn by the display.
+
+Note that final color translation is applied with a one-line delay; for changing LCD shade or color palette values, subtract 1 from this value.</comment>
+	</port>
+	<port name="DISPLAY_LINE_IRQ" address="0x03" width="1">
+		<comment>The line on the start of which the line interurpt should be requested.</comment> 
+	</port>
+	<port name="SPR_BASE" address="0x04" width="1">
+		<comment>Base address of sprite table data.</comment>
+		<code language="c">#define WS_SPR_BASE_ADDR(n) (((uint16_t) (n)) &gt;&gt; 9)</code>
+	</port>
+	<port name="SPR_FIRST" address="0x05" width="1">
+		<comment>First sprite to draw from the sprite table (0 - 127).</comment>
+	</port>
+	<port name="SPR_COUNT" address="0x06" width="1">
+		<comment>Number of consecutive sprites to draw from the sprite table (1 - 128).</comment>
+	</port>
+	<port name="SCR_BASE" address="0x07" width="1">
+		<comment>Base address of screen layer data.</comment>
+		<code language="c">#define WS_SCR_BASE_1_ADDR(n) (((uint16_t) (n)) &gt;&gt; 11)</code>
+		<code language="c">#define WS_SCR_BASE_2_ADDR(n) ((((uint16_t) (n)) &gt;&gt; 11) &lt;&lt; 4)</code>
+	</port>
+	<port name="SCR2_WIN_X1" address="0x08" width="1">
+		<comment>Left-most pixel of the Screen 2 window.</comment>
+	</port>
+	<port name="SCR2_WIN_Y1" address="0x09" width="1">
+		<comment>Top-most pixel of the Screen 2 window.</comment>
+	</port>
+	<port name="SCR2_WIN_X2" address="0x0A" width="1">
+		<comment>Right-most pixel of the Screen 2 window.</comment>
+	</port>
+	<port name="SCR2_WIN_Y2" address="0x0B" width="1">
+		<comment>Bottom-most pixel of the Screen 2 window.</comment>
+	</port>
+	<port name="SPR_WIN_X1" address="0x0C" width="1">
+		<comment>Left-most pixel of the sprite window.</comment>
+	</port>
+	<port name="SPR_WIN_Y1" address="0x0D" width="1">
+		<comment>Top-most pixel of the sprite window.</comment>
+	</port>
+	<port name="SPR_WIN_X2" address="0x0E" width="1">
+		<comment>Right-most pixel of the sprite window.</comment>
+	</port>
+	<port name="SPR_WIN_Y2" address="0x0F" width="1">
+		<comment>Bottom-most pixel of the sprite window.</comment>
+	</port>
+	<port name="SCR1_SCRL_X" address="0x10" width="1">
+		<comment>X drawing offset of the Screen 1 layer.</comment>
+	</port>
+	<port name="SCR1_SCRL_Y" address="0x11" width="1">
+		<comment>Y drawing offset of the Screen 1 layer.</comment>
+	</port>
+	<port name="SCR2_SCRL_X" address="0x12" width="1">
+		<comment>X drawing offset of the Screen 2 layer.</comment>
+	</port>
+	<port name="SCR2_SCRL_Y" address="0x13" width="1">
+		<comment>Y drawing offset of the Screen 2 layer.</comment>
+	</port>
+	<port name="LCD_CTRL" address="0x14" width="1">
+		<comment>Controls LCD driver functionality.</comment>
+		<enum name="CONTRAST" offset="1" width="1">
+			<value name="LOW" value="0"/>
+			<value name="HIGH" value="1"/>
+		</enum>
+		<enum name="SLEEP" offset="0" width="1">
+			<value name="ON" value="0"/>
+			<value name="OFF" value="1"/>
+		</enum>
+	</port>
+	<port name="LCD_ICON" address="0x15" width="1">
+		<comment>Controls the visibility of LCD sidebar icons.</comment>
+		<bit name="SLEEP" offset="0">
+			<comment>Sleep segment icon, depicted as a star.</comment>
+		</bit>
+		<bit name="ORIENT_V" offset="1">
+			<comment>Vertical orientation icon.</comment>
+		</bit>
+		<bit name="ORIENT_H" offset="2">
+			<comment>Horizontal orientation icon.</comment>
+		</bit>
+		<bit name="AUX1" offset="3">
+			<comment>Etc. 1 (small circle) icon.</comment>
+		</bit>
+		<bit name="AUX2" offset="4">
+			<comment>Etc. 2 (medium circle) icon.</comment>
+		</bit>
+		<bit name="AUX3" offset="5">
+			<comment>Etc. 3 (large circle) icon.</comment>
+		</bit>
+	</port>
+	<port name="LCD_VTOTAL" address="0x16" width="1">
+		<comment>The final line preceding line counter restart and the beginning of active display. By default, this is set to 158, which equals 159 total lines per frame. 
+
+For safety reasons, this should only be set to even values.</comment>
+	</port>
+	<port name="LCD_STN_VSYNC" address="0x17" width="1">
+		<comment>On STN models (WS/WSC), this controls the start of the vertical back porch. For compatibility, this should always be set to 3 less than LCD_VTOTAL.</comment>
+	</port>
+	<port name="LCD_NEXT_LINE" address="0x18" width="1">
+		<comment>The next line to start drawing on. Write-only. Not recommended for use.</comment>
+	</port>
+	<port name="LCD_ICON_LATCH" address="0x1A" width="1">
+		<comment>Latched (SoC-controlled) icon status/control.</comment>
+		<bit name="DISABLE" offset="0"/>
+		<bit name="HEADPHONE" offset="1"/>
+		<bit name="VOLUME_B" offset="2"/>
+		<bit name="VOLUME_A" offset="3"/>
+		<bit name="VOLUME" offset="4"/>
+		<bit name="CARTRIDGE" offset="5"/>
+	</port>
+	<port name="LCD_SHADE_01" address="0x1C" width="1">
+	</port>
+	<port name="LCD_SHADE_23" address="0x1D" width="1">
+	</port>
+	<port name="LCD_SHADE_45" address="0x1E" width="1">
+	</port>
+	<port name="LCD_SHADE_67" address="0x1F" width="1">
+	</port>
+	<portarray name="SCR_PAL" address="0x20" width="2" count="16">
+	</portarray>
+	<portarray name="SPR_PAL" address="0x30" width="2" count="8">
+	</portarray>
+</section>

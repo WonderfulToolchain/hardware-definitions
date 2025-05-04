@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="WS">
+	<comment>UART I/O ports</comment>
+
+	<port name="UART_DATA" address="0xB1" width="1"/>
+
+	<port name="UART_CTRL" address="0xB3" width="1">
+		<bit name="ENABLE" offset="7">
+			<comment>Enable UART serial in EXT port.</comment>
+		</bit>
+		<enum name="BAUD" offset="6" width="1">
+			<value name="9600" value="0">
+				<comment>Clock UART port at 9600 baud.</comment>
+			</value>
+			<value name="38400" value="1">
+				<comment>Clock UART port at 38400 baud.</comment>
+			</value>
+		</enum>
+		<bit name="RX_OVERRUN_RESET" offset="5">
+			<comment>Reset the RX overrun flag.</comment>
+		</bit>
+		<bit name="TX_READY" offset="2">
+			<comment>UART TX ready - the data port can be written with a new byte.</comment>
+		</bit>
+		<bit name="RX_OVERRUN" offset="1">
+			<comment>UART RX overrun - a second byte was received before the first byte was read out.</comment>
+		</bit>
+		<bit name="RX_READY" offset="0">
+			<comment>UART RX ready - the data port can have a new byte read from.</comment>
+		</bit>
+	</port>
+</section>

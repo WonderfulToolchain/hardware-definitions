@@ -31,10 +31,10 @@
 	<port name="SDMA_SOURCE_H" address="0x4C" width="1">
 		<comment>High 4 bits of the linear sound DMA source address.</comment>
 	</port>
-	<port name="SDMA_SOURCE_L" address="0x4E" width="2">
+	<port name="SDMA_LENGTH_L" address="0x4E" width="2">
 		<comment>Low 16 bits of the sound DMA transfer length.</comment>
 	</port>
-	<port name="SDMA_SOURCE_H" address="0x50" width="1">
+	<port name="SDMA_LENGTH_H" address="0x50" width="1">
 		<comment>High 4 bits of the sound DMA transfer length.</comment>
 	</port>
 	<port name="SDMA_CTRL" address="0x52" width="1">

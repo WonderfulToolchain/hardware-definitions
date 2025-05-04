@@ -133,11 +133,11 @@ class NASMEmitter(NullEmitter):
 
 def process_macro_tree(em, f, name, state):
     # Append current element name
-    if "name" in f.attributes:
-        localName = f.attributes["name"].nodeValue
+    local_name = attr_value(f, "name", "")
+    if len(local_name) > 0:
         if len(name) > 0:
             name += "_"
-        name += localName
+        name += local_name
 
     # Process self
     if f.nodeName == "port":
@@ -167,16 +167,17 @@ def process_macro_tree(em, f, name, state):
         process_macro_tree(em, node, name, state.copy())
 
     # Process self
-    if f.nodeName == "bit":
-        em.emit_value(name, 1 << int(attr_value(f, "offset"), 0), get_comment_lines(f), hex=True)
-    elif f.nodeName == "enum":
-        offset = state["offset"]
-        width = int(attr_value(f, "width"), 0)
-        em.emit_value(f"{name}_SHIFT", offset)
-        em.emit_value(f"{name}_MASK", ((1 << width) - 1) << offset, hex=True)
-    elif f.nodeName == "value":
-        offset = state["offset"]
-        em.emit_value(name, int(attr_value(f, "value"), 0) << offset, get_comment_lines(f), hex=True)
+    if len(local_name) > 0:
+        if f.nodeName == "bit":
+            em.emit_value(name, 1 << int(attr_value(f, "offset"), 0), get_comment_lines(f), hex=True)
+        elif f.nodeName == "enum":
+            offset = state["offset"]
+            width = int(attr_value(f, "width"), 0)
+            em.emit_value(f"{name}_SHIFT", offset)
+            em.emit_value(f"{name}_MASK", ((1 << width) - 1) << offset, hex=True)
+        elif f.nodeName == "value":
+            offset = state["offset"]
+            em.emit_value(name, int(attr_value(f, "value"), 0) << offset, get_comment_lines(f), hex=True)
 
 def process_file(em, f, name):
     em.emit_section_start(name, get_comment_lines(f.documentElement))

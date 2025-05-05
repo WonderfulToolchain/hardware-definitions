@@ -67,12 +67,16 @@
 		</bit>
 		<enum name="RATE" offset="0" width="2">
 			<value name="4000" value="0">
+				<comment>Sound DMA sample rate: 4000 Hz.</comment>
 			</value>
 			<value name="6000" value="1">
+				<comment>Sound DMA sample rate: 6000 Hz.</comment>
 			</value>
 			<value name="12000" value="2">
+				<comment>Sound DMA sample rate: 12000 Hz.</comment>
 			</value>
 			<value name="24000" value="3">
+				<comment>Sound DMA sample rate: 24000 Hz.</comment>
 			</value>
 		</enum>
 	</port>

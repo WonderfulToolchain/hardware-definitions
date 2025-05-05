@@ -38,7 +38,7 @@ Note that final color translation is applied with a one-line delay; for changing
 	</port>
 	<port name="SPR_BASE" address="0x04" width="1">
 		<comment>Base address of sprite table data.</comment>
-		<code language="c">#define WS_SPR_BASE_ADDR(n) (((uint16_t) (n)) &gt;&gt; 9)</code>
+		<code language="c">#define WS_SPR_BASE_ADDR(n) (((unsigned int) (n)) &gt;&gt; 9)</code>
 	</port>
 	<port name="SPR_FIRST" address="0x05" width="1">
 		<comment>First sprite to draw from the sprite table (0 - 127).</comment>
@@ -48,8 +48,8 @@ Note that final color translation is applied with a one-line delay; for changing
 	</port>
 	<port name="SCR_BASE" address="0x07" width="1">
 		<comment>Base address of screen layer data.</comment>
-		<code language="c">#define WS_SCR_BASE_1_ADDR(n) (((uint16_t) (n)) &gt;&gt; 11)</code>
-		<code language="c">#define WS_SCR_BASE_2_ADDR(n) ((((uint16_t) (n)) &gt;&gt; 11) &lt;&lt; 4)</code>
+		<code language="c">#define WS_SCR_BASE_1_ADDR(n) (((unsigned int) (n)) &gt;&gt; 11)</code>
+		<code language="c">#define WS_SCR_BASE_2_ADDR(n) ((((unsigned int) (n)) &gt;&gt; 11) &lt;&lt; 4)</code>
 	</port>
 	<port name="SCR2_WIN_X1" address="0x08" width="1">
 		<comment>Left-most pixel of the Screen 2 window.</comment>

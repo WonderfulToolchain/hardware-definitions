@@ -23,16 +23,16 @@
 		</enum>
 	</port>
 
-	<port name="CART_BANKEXT_ROML" address="0xCF" width="1">
+	<port name="CART_EXTBANK_ROML" address="0xCF" width="1">
 		<comment>Linear ROM (0x40000 - 0xFFFFF) bank address.</comment>
 	</port>
-	<port name="CART_BANKEXT_RAM"  address="0xD0" width="2">
+	<port name="CART_EXTBANK_RAM"  address="0xD0" width="2">
 		<comment>RAM (0x10000 - 0x1FFFF) bank address (up to 4 GiB).</comment>
 	</port>
-	<port name="CART_BANKEXT_ROM0" address="0xD2" width="2">
+	<port name="CART_EXTBANK_ROM0" address="0xD2" width="2">
 		<comment>ROM0 (0x20000 - 0x2FFFF) bank address (up to 4 GiB).</comment>
 	</port>
-	<port name="CART_BANKEXT_ROM1" address="0xD4" width="2">
+	<port name="CART_EXTBANK_ROM1" address="0xD4" width="2">
 		<comment>ROM1 (0x30000 - 0x3FFFF) bank address (up to 4 GiB).</comment>
 	</port>
 </section>

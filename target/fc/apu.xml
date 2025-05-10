@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="FC">
+	<comment>APU MMIO</comment>
+	<address name="APU_PULSE1_CTRL" value="0x4000" width="1">
+		<enum name="DUTY" offset="6" width="2">
+			<value name="12_5" value="0">
+				<comment>Duty cycle: 12.5%</comment>
+			</value>
+			<value name="25" value="1">
+				<comment>Duty cycle: 25%</comment>
+			</value>
+			<value name="50" value="2">
+				<comment>Duty cycle: 50%</comment>
+			</value>
+			<value name="75" value="3">
+				<comment>Duty cycle: 75%</comment>
+			</value>
+		</enum>
+	</address>
+	<address name="APU_PULSE1_SWEEP" value="0x4001" width="1">
+		<bit name="ENABLE" offset="7"/>
+	</address>
+	<address name="APU_PULSE1_TIMER_L" value="0x4002" width="1">
+	</address>
+	<address name="APU_PULSE1_TIMER_H" value="0x4003" width="1">
+	</address>
+	<address name="APU_PULSE2_CTRL" value="0x4004" width="1">
+		<enum name="DUTY" offset="6" width="2">
+			<value name="12_5" value="0">
+				<comment>Duty cycle: 12.5%</comment>
+			</value>
+			<value name="25" value="1">
+				<comment>Duty cycle: 25%</comment>
+			</value>
+			<value name="50" value="2">
+				<comment>Duty cycle: 50%</comment>
+			</value>
+			<value name="75" value="3">
+				<comment>Duty cycle: 75%</comment>
+			</value>
+		</enum>
+	</address>
+	<address name="APU_PULSE2_SWEEP" value="0x4005" width="1">
+		<bit name="ENABLE" offset="7"/>
+	</address>
+	<address name="APU_PULSE2_TIMER_L" value="0x4006" width="1">
+	</address>
+	<address name="APU_PULSE2_TIMER_H" value="0x4007" width="1">
+	</address>
+	<address name="APU_TRIANGLE_COUNTER" value="0x4008" width="1">
+	</address>
+	<address name="APU_TRIANGLE_TIMER_L" value="0x400A" width="1">
+	</address>
+	<address name="APU_TRIANGLE_TIMER_H" value="0x400B" width="1">
+	</address>
+	<address name="APU_NOISE_CTRL" value="0x400C" width="1">
+	</address>
+	<address name="APU_NOISE_MODE" value="0x400E" width="1">
+	</address>
+	<address name="APU_NOISE_LENGTH" value="0x400F" width="1">
+	</address>
+	<address name="APU_DMC_CTRL" value="0x4010" width="1">
+		<bit name="IRQ" offset="7"/>
+		<bit name="LOOP" offset="6"/>
+	</address>
+	<address name="APU_DMC_SAMPLE" value="0x4011" width="1">
+	</address>
+	<address name="APU_DMC_SRC" value="0x4012" width="1">
+	</address>
+	<address name="APU_DMC_LEN" value="0x4013" width="1">
+	</address>
+	<address name="APU_CTRL" value="0x4014" width="1">
+		<bit name="PULSE1" offset="0"/>
+		<bit name="PULSE2" offset="1"/>
+		<bit name="TRIANGLE" offset="2"/>
+		<bit name="NOISE" offset="3"/>
+		<bit name="DMC" offset="4"/>
+	</address>
+	<address name="APU_STATUS" value="0x4015" width="1">
+		<bit name="PULSE1" offset="0"/>
+		<bit name="PULSE2" offset="1"/>
+		<bit name="TRIANGLE" offset="2"/>
+		<bit name="NOISE" offset="3"/>
+		<bit name="DMC" offset="4"/>
+		<bit name="FRAME_INT" offset="6"/>
+		<bit name="DMC_INT" offset="7"/>
+	</address>
+
+	<address name="APU_FRAME" value="0x4017" width="1">
+		<enum name="SEQ" offset="7" width="1">
+			<value name="4" value="0">
+				<comment>4-step sequence</comment>
+			</value>
+			<value name="5" value="1">
+				<comment>5-step sequence</comment>
+			</value>
+		</enum>
+		<bit name="INT_INHIBIT" offset="6"/>
+	</address>	
+</section>

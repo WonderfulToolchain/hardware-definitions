@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="FC">
+	<comment>PPU MMIO</comment>
+	<address name="PPU_CTRL" value="0x2000" width="1">
+		<enum name="NAMETABLE" offset="0" width="2">
+			<comment>Nametable address</comment>
+			<value name="2000" value="0">
+				<comment>Nametable address: 0x2000</comment>
+			</value>
+			<value name="2400" value="1">
+				<comment>Nametable address: 0x2400</comment>
+			</value>
+			<value name="2800" value="2">
+				<comment>Nametable address: 0x2800</comment>
+			</value>
+			<value name="2C00" value="3">
+				<comment>Nametable address: 0x2C00</comment>
+			</value>
+		</enum>
+		<enum name="VRAM_STEP" offset="2" width="1">
+			<comment>VRAM increment on PPU_DATA access</comment>
+			<value name="1" value="0">
+				<comment>Increment VRAM address by 1 on PPU_DATA access</comment>
+			</value>
+			<value name="32" value="1">
+				<comment>Increment VRAM address by 32 on PPU_DATA access</comment>
+			</value>
+		</enum>
+		<enum name="SPRITE" offset="3" width="1">
+			<comment>Sprite pattern table address. Ignored in 8x16 sprite mode</comment>
+			<value name="0000" value="0">
+				<comment>Sprite pattern table address: 0x0000</comment>
+			</value>
+			<value name="1000" value="1">
+				<comment>Sprite pattern table address: 0x1000</comment>
+			</value>
+		</enum>
+		<enum name="BG" offset="4" width="1">
+			<comment>Background pattern table address</comment>
+			<value name="0000" value="0">
+				<comment>Background pattern table address: 0x0000</comment>
+			</value>
+			<value name="1000" value="1">
+				<comment>Background pattern table address: 0x1000</comment>
+			</value>
+		</enum>
+		<enum name="SPRITE_HEIGHT" offset="5" width="1">
+			<comment>Sprite size (height)</comment>
+			<value name="8" value="0">
+				<comment>Sprite size: 8x8</comment>
+			</value>
+			<value name="16" value="1">
+				<comment>Sprite size: 8x16</comment>
+			</value>
+		</enum>
+		<enum name="EXT" offset="6" width="1">
+			<comment>PPU EXT mode select</comment>
+			<value name="MAIN" value="0"/>
+			<value name="SUB" value="1"/>
+		</enum>
+		<bit name="VBLANK_NMI" offset="7">
+			<comment>Vertical blank non-maskable interrupt enable</comment>
+		</bit>
+	</address>
+	<address name="PPU_MASK" value="0x2001" width="1">
+		<bit name="GREYSCALE" offset="0"><comment>Greyscale mode</comment></bit>
+		<bit name="LEFT_BG" offset="1"><comment>Show first 8 pixels of background layer</comment></bit>
+		<bit name="LEFT_SPRITE" offset="2"><comment>Show first 8 pixels of sprite layer</comment></bit>
+		<bit name="BG" offset="3"><comment>Show background layer</comment></bit>
+		<bit name="SPRITE" offset="4"><comment>Show sprite layer</comment></bit>
+		<bit name="RED" offset="5"><comment>Red color component emphasis</comment></bit>
+		<bit name="GREEN" offset="6"><comment>Green color component emphasis</comment></bit>
+		<bit name="BLUE" offset="7"><comment>Blue color component emphasis</comment></bit>
+	</address>
+	<address name="PPU_STATUS" value="0x2002" width="1">
+		<bit name="OVERFLOW" offset="5"><comment>Sprite overflow</comment></bit>
+		<bit name="SPRITE_0" offset="6"><comment>Sprite 0 hit</comment></bit>
+		<bit name="VBLANK" offset="7"><comment>Vertical blank</comment></bit>
+	</address>
+	<address name="OAM_ADDR" value="0x2003" width="1">
+	</address>
+	<address name="OAM_DATA" value="0x2004" width="1">
+	</address>
+	<address name="PPU_SCROLL" value="0x2005" width="1">
+	</address>
+	<address name="PPU_ADDR" value="0x2006" width="1">
+	</address>
+	<address name="PPU_DATA" value="0x2007" width="1">
+	</address>
+	<address name="OAM_DMA" value="0x4014" width="1">
+	</address>
+</section>

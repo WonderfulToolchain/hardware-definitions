@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="GBA">
+	<comment>Timer MMIO</comment>
+	<addressarray name="TIMER_VAL" value="0x4000100" width="2" pitch="4" count="4">
+	</addressarray>
+	<addressarray name="TIMER_CNT" value="0x4000102" width="2" pitch="4" count="4">
+		<enum name="DIV" offset="0" width="3">
+			<value name="1" value="0">
+				<comment>System div 1 (~16.78 MHz) clock</comment>
+			</value>
+			<value name="64" value="1">
+				<comment>System div 64 (~262 KHz) clock</comment>
+			</value>
+			<value name="256" value="2">
+				<comment>System div 256 (~65 KHz) clock</comment>
+			</value>
+			<value name="1024" value="3">
+				<comment>System div 1024 (~16 KHz) clock</comment>
+			</value>
+			<value name="PREV" value="4">
+				<comment>Previous timer clock</comment>
+			</value>
+		</enum>
+		<bit name="IRQ" offset="6">
+			<comment>Request interrupt on timer overflow</comment>
+		</bit>
+		<bit name="ENABLE" offset="7">
+		</bit>
+	</addressarray>
+	<address name="TIMER0VAL" value="0x4000100" width="2"/>
+	<address name="TIMER0CNT" value="0x4000102" width="2"/>
+	<address name="TIMER1VAL" value="0x4000104" width="2"/>
+	<address name="TIMER1CNT" value="0x4000106" width="2"/>
+	<address name="TIMER2VAL" value="0x4000108" width="2"/>
+	<address name="TIMER2CNT" value="0x400010A" width="2"/>
+	<address name="TIMER3VAL" value="0x400010C" width="2"/>
+	<address name="TIMER3CNT" value="0x400010E" width="2"/>
+</section>

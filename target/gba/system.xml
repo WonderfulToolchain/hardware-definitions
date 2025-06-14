@@ -1,0 +1,97 @@
+<section name="GBA">
+	<comment>System MMIO</comment>
+	<address name="SOC_WAITCNT" value="0x4000204" width="2">
+		<comment>Memory waitstate control</comment>
+		<enum name="SRAM" offset="0" width="2">
+			<comment>SRAM access waitstate</comment>
+			<value name="4" value="0"><comment>4 additional system clocks per access</comment></value>
+			<value name="3" value="1"><comment>3 additional system clocks per access</comment></value>
+			<value name="2" value="2"><comment>2 additional system clocks per access</comment></value>
+			<value name="8" value="3"><comment>8 additional system clocks per access</comment></value>
+		</enum>
+		<enum name="ROM0" offset="2" width="2">
+			<comment>ROM area 0 (0x8000000 - 0x9FFFFFE) first access waitstate</comment>
+			<value name="4" value="0"><comment>4 additional system clocks per access</comment></value>
+			<value name="3" value="1"><comment>3 additional system clocks per access</comment></value>
+			<value name="2" value="2"><comment>2 additional system clocks per access</comment></value>
+			<value name="8" value="3"><comment>8 additional system clocks per access</comment></value>
+		</enum>
+		<enum name="ROM0S" offset="4" width="1">
+			<comment>ROM area 0 (0x8000000 - 0x9FFFFFE) sequential access waitstate</comment>
+			<value name="2" value="0"><comment>2 additional system clocks per sequential access</comment></value>
+			<value name="1" value="1"><comment>1 additional system clock per sequential access</comment></value>
+		</enum>
+		<enum name="ROM1" offset="5" width="2">
+			<comment>ROM area 1 (0xA000000 - 0xBFFFFFE) first access waitstate</comment>
+			<value name="4" value="0"><comment>4 additional system clocks per access</comment></value>
+			<value name="3" value="1"><comment>3 additional system clocks per access</comment></value>
+			<value name="2" value="2"><comment>2 additional system clocks per access</comment></value>
+			<value name="8" value="3"><comment>8 additional system clocks per access</comment></value>
+		</enum>
+		<enum name="ROM1S" offset="7" width="1">
+			<comment>ROM area 1 (0xA000000 - 0xBFFFFFE) sequential access waitstate</comment>
+			<value name="2" value="0"><comment>2 additional system clocks per sequential access</comment></value>
+			<value name="1" value="1"><comment>1 additional system clock per sequential access</comment></value>
+		</enum>
+		<enum name="ROM2" offset="8" width="2">
+			<comment>ROM area 2 (0xC000000 - 0xDFFFFFE) first access waitstate</comment>
+			<value name="4" value="0"><comment>4 additional system clocks per access</comment></value>
+			<value name="3" value="1"><comment>3 additional system clocks per access</comment></value>
+			<value name="2" value="2"><comment>2 additional system clocks per access</comment></value>
+			<value name="8" value="3"><comment>8 additional system clocks per access</comment></value>
+		</enum>
+		<enum name="ROM2S" offset="10" width="1">
+			<comment>ROM area 2 (0xC000000 - 0xDFFFFFE) sequential access waitstate</comment>
+			<value name="2" value="0"><comment>2 additional system clocks per sequential access</comment></value>
+			<value name="1" value="1"><comment>1 additional system clock per sequential access</comment></value>
+		</enum>
+		<enum name="PHI" offset="11" width="2">
+			<comment>Clock output to cartridge on PHI pin</comment>
+			<value name="NONE" value="0"><comment>No clock output</comment></value>
+			<value name="DIV_4" value="1"><comment>System div 4 (~4.19 MHz) clock output</comment></value>
+			<value name="DIV_2" value="2"><comment>System div 2 (~8.38 MHz) clock output</comment></value>
+			<value name="DIV_1" value="3"><comment>System div 1 (~16.78 MHz) clock output</comment></value>
+		</enum>
+		<bit name="ROM_PREFETCH" offset="14">
+			<comment>Enable ROM prefetch</comment>
+		</bit>
+		<enum name="CART_TYPE" offset="15" width="1">
+			<comment>Type of inserted cartridge</comment>
+			<value name="AGB" value="0"><comment>GBA cartridge</comment></value>
+			<value name="CGB" value="1"><comment>GB/GBC cartridge</comment></value>
+		</enum>
+	</address>
+	<address name="SOC_WARMFLG" value="0x4000300" width="1">
+		<comment>Set to 0 on cold reset, 1 on warm reset</comment>
+	</address>
+	<address name="SOC_HALTCNT" value="0x4000301" width="1">
+		<enum name="MODE" offset="7" width="1">
+			<value name="HALT" value="0"></value>
+			<value name="STOP" value="1"></value>
+		</enum>
+	</address>
+	<address name="SOC_MEMCNT" value="0x4000800" width="4">	
+		<bit name="WRAM_DISABLE" offset="0"/>
+		<bit name="CGB_TEST0" offset="1"/>
+		<bit name="CGB_TEST1" offset="2"/>
+		<bit name="CGB_TEST2" offset="3"/>
+		<bit name="EWRAM_ENABLE" offset="5"/>
+		<enum name="RAM_WAIT" offset="24" width="4">
+			<value name="15" value="0"></value>
+			<value name="14" value="1"></value>
+			<value name="13" value="2"></value>
+			<value name="12" value="3"></value>
+			<value name="11" value="4"></value>
+			<value name="10" value="5"></value>
+			<value name="9" value="6"></value>
+			<value name="8" value="7"></value>
+			<value name="7" value="8"></value>
+			<value name="6" value="9"></value>
+			<value name="5" value="10"></value>
+			<value name="4" value="11"></value>
+			<value name="3" value="12"></value>
+			<value name="2" value="13"></value>
+			<value name="1" value="14"></value>
+		</enum>
+	</address>
+</section>

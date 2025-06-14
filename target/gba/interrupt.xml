@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="GBA">
+	<comment>Interrupt MMIO</comment>
+	<address name="SOC_IME" value="0x4000208" width="4">
+		<comment>Interrupt main enable - enable or disable all interrupts.</comment>
+	</address>
+	<address name="SOC_IE" value="0x4000200" width="2">
+		<comment>Interrupt enable mask</comment>
+		<bit name="LCD_VBLANK" offset="0"/>
+		<bit name="LCD_HBLANK" offset="1"/>
+		<bit name="LCD_VCOUNT" offset="2"/>
+		<bit name="TIMER0" offset="3"/>
+		<bit name="TIMER1" offset="4"/>
+		<bit name="TIMER2" offset="5"/>
+		<bit name="TIMER3" offset="6"/>
+		<bit name="SIO" offset="7"/>
+		<bit name="DMA0" offset="8"/>
+		<bit name="DMA1" offset="9"/>
+		<bit name="DMA2" offset="10"/>
+		<bit name="DMA3" offset="11"/>
+		<bit name="KEY" offset="12"/>
+		<bit name="CART" offset="13"><comment>IRQ signal on cartridge</comment></bit>
+	</address>
+	<address name="SOC_IF" value="0x4000202" width="2">
+		<comment>Interrupt flags</comment>
+		<bit name="LCD_VBLANK" offset="0"/>
+		<bit name="LCD_HBLANK" offset="1"/>
+		<bit name="LCD_VCOUNT" offset="2"/>
+		<bit name="TIMER0" offset="3"/>
+		<bit name="TIMER1" offset="4"/>
+		<bit name="TIMER2" offset="5"/>
+		<bit name="TIMER3" offset="6"/>
+		<bit name="SIO" offset="7"/>
+		<bit name="DMA0" offset="8"/>
+		<bit name="DMA1" offset="9"/>
+		<bit name="DMA2" offset="10"/>
+		<bit name="DMA3" offset="11"/>
+		<bit name="KEY" offset="12"/>
+		<bit name="CART" offset="13"><comment>IRQ signal on cartridge</comment></bit>
+	</address>
+</section>

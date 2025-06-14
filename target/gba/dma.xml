@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="GBA">
+	<comment>Timer MMIO</comment>
+	<addressarray name="DMA_SRC" value="0x40000B0" width="4" pitch="12" count="4"/>
+	<addressarray name="DMA_DST" value="0x40000B4" width="4" pitch="12" count="4"/>
+	<addressarray name="DMA_LEN" value="0x40000B8" width="2" pitch="12" count="4"/>
+	<addressarray name="DMA_CNT" value="0x40000BA" width="2" pitch="12" count="4">
+		<enum name="DST" offset="5" width="2">
+			<value name="INC" value="0">
+			</value>
+			<value name="DEC" value="1">
+			</value>
+			<value name="FIX" value="2">
+			</value>
+			<value name="RELOAD" value="3">
+			</value>
+		</enum>
+		<enum name="SRC" offset="7" width="2">
+			<value name="INC" value="0">
+			</value>
+			<value name="DEC" value="1">
+			</value>
+			<value name="FIX" value="2">
+			</value>
+		</enum>
+		<bit name="REPEAT" offset="9">
+		</bit>
+		<enum name="WIDTH" offset="10" width="1">
+			<value name="16BIT" value="0"/>
+			<value name="32BIT" value="1"/>
+		</enum>
+		<bit name="CART_DRQ" offset="11">
+			<!-- TODO -->
+		</bit>
+		<enum name="START" offset="12" width="2">
+			<value name="NOW" value="0">
+			</value>
+			<value name="VBLANK" value="1">
+			</value>
+			<value name="HBLANK" value="2">
+			</value>
+			<value name="SOUND" value="3">
+				<comment>Start on sound DMA request (channels 1/2 only).</comment>
+			</value>
+			<value name="VIDEO" value="3">
+			</value>
+		</enum>
+		<bit name="IRQ" offset="14">
+			<comment>Request interrupt on transfer completion</comment>
+		</bit>
+		<bit name="ENABLE" offset="15">
+		</bit>
+	</addressarray>
+
+	<address name="DMA0SRC" value="0x40000B0" width="4"/>
+	<address name="DMA0DST" value="0x40000B4" width="4"/>
+	<address name="DMA0LEN" value="0x40000B8" width="2"/>
+	<address name="DMA0CNT" value="0x40000BA" width="2"/>
+	<address name="DMA1SRC" value="0x40000BC" width="4"/>
+	<address name="DMA1DST" value="0x40000C0" width="4"/>
+	<address name="DMA1LEN" value="0x40000C4" width="2"/>
+	<address name="DMA1CNT" value="0x40000C6" width="2"/>
+	<address name="DMA2SRC" value="0x40000C8" width="4"/>
+	<address name="DMA2DST" value="0x40000CC" width="4"/>
+	<address name="DMA2LEN" value="0x40000D0" width="2"/>
+	<address name="DMA2CNT" value="0x40000D2" width="2"/>
+	<address name="DMA3SRC" value="0x40000D4" width="4"/>
+	<address name="DMA3DST" value="0x40000D8" width="4"/>
+	<address name="DMA3LEN" value="0x40000DC" width="2"/>
+	<address name="DMA3CNT" value="0x40000DE" width="2"/>
+</section>

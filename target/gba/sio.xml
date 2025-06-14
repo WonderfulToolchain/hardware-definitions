@@ -1,0 +1,128 @@
+<section name="GBA">
+	<comment>Serial MMIO</comment>
+	<address name="SIO_PORTCNT" value="0x4000134" width="2">
+		<bit name="SC_DATA" offset="0"/>
+		<bit name="SD_DATA" offset="1"/>
+		<bit name="SI_DATA" offset="2"/>
+		<bit name="SO_DATA" offset="3"/>
+		<enum name="SC_DIR" offset="4" width="1">
+			<value name="IN" value="0"/>
+			<value name="OUT" value="1"/>
+		</enum>
+		<enum name="SD_DIR" offset="5" width="1">
+			<value name="IN" value="0"/>
+			<value name="OUT" value="1"/>
+		</enum>
+		<enum name="SI_DIR" offset="6" width="1">
+			<value name="IN" value="0"/>
+			<value name="OUT" value="1"/>
+		</enum>
+		<enum name="SO_DIR" offset="7" width="1">
+			<value name="IN" value="0"/>
+			<value name="OUT" value="1"/>
+		</enum>
+		<bit name="SI_IRQ" offset="8"><comment>Request interrupt on SI falling edge</comment></bit>
+		<enum name="MODE" offset="14" width="2">
+			<comment>Link port mode</comment>
+			<value name="SIO" value="0">
+				<comment>Serial I/O; SIO_CNT controls port</comment>
+			</value>
+			<value name="RAW" value="2">
+				<comment>Raw I/O; SIO_PORTCNT controls port directly</comment>
+			</value>
+			<value name="JOYBUS" value="3">
+				<comment>Joybus I/O; SIO_JOYCNT controls port</comment>
+			</value>
+		</enum>
+	</address>
+	<address name="SIO_CNT" value="0x4000134" width="2">
+		<enum name="SPI_CLOCK" offset="0" width="2">
+			<value name="EXT" value="0">
+				<comment>Use external clock</comment>
+			</value>
+			<value name="INT_256KHZ" value="0">
+				<comment>Use 256 KHz internal clock</comment>
+			</value>
+			<value name="INT_2MHZ" value="0">
+				<comment>Use 2 MHz internal clock</comment>
+			</value>
+		</enum>
+		<!-- TODO: bits 2,3,7 -->
+	
+		<enum name="MULTI_BAUD" offset="0" width="2">
+			<value name="9600" value="0">
+				<comment>9600 baud/sec</comment>
+			</value>
+			<value name="38400" value="1">
+				<comment>38400 baud/sec</comment>
+			</value>
+			<value name="57600" value="2">
+				<comment>57600 baud/sec</comment>
+			</value>
+			<value name="115200" value="3">
+				<comment>115200 baud/sec</comment>
+			</value>
+		</enum>
+		<!-- TODO: bits 2-5 -->
+		<bit name="MULTI_ERROR" offset="6"></bit>
+		<!-- TODO: bit 7 -->
+		
+		<enum name="UART_BAUD" offset="0" width="2">
+			<value name="9600" value="0">
+				<comment>9600 baud/sec</comment>
+			</value>
+			<value name="38400" value="1">
+				<comment>38400 baud/sec</comment>
+			</value>
+			<value name="57600" value="2">
+				<comment>57600 baud/sec</comment>
+			</value>
+			<value name="115200" value="3">
+				<comment>115200 baud/sec</comment>
+			</value>
+		</enum>
+		<!-- TODO: bits 2-5 -->
+		<bit name="UART_ERROR" offset="6"></bit>
+		<enum name="UART_DATA_LENGTH" offset="7" width="1">
+			<value name="7BIT" value="0"></value>
+			<value name="8BIT" value="1"></value>
+		</enum>
+		<bit name="UART_FIFO_ENABLE" offset="8"></bit>
+		<bit name="UART_PARITY_ENABLE" offset="9"></bit>
+		<bit name="UART_SEND_ENABLE" offset="10"></bit>
+		<bit name="UART_RECV_ENABLE" offset="11"></bit>
+	
+		<enum name="MODE" offset="12" width="2">
+			<comment>Serial port mode</comment>
+			<value name="SPI8" value="0">
+				<comment>8-bit SPI</comment>
+			</value>
+			<value name="SPI32" value="1">
+				<comment>32-bit SPI</comment>
+			</value>
+			<value name="MULTI" value="2">
+				<comment>16-bit Multiplay</comment>
+			</value>
+			<value name="UART" value="3">
+				<comment>UART</comment>
+			</value>
+		</enum>
+		<bit name="IRQ" offset="14"><comment>Request interrupt on transfer completion</comment></bit>
+	</address>
+	<address name="SIO_DATA32" value="0x4000120" width="4"/>
+	<address name="SIO_DATA8" value="0x400012A" width="1"/>
+	<address name="SIO_MULTISEND" value="0x400012A" width="2"/>
+	<address name="SIO_MULTIRECV0" value="0x4000120" width="2"/>
+	<address name="SIO_MULTIRECV1" value="0x4000122" width="2"/>
+	<address name="SIO_MULTIRECV2" value="0x4000124" width="2"/>
+	<address name="SIO_MULTIRECV3" value="0x4000126" width="2"/>
+	<address name="SIO_JOYCNT" value="0x4000140" width="2">
+		<!-- TODO: bits 0-2 -->
+		<bit name="IRQ" offset="6"><comment>Request interrupt on device reset</comment></bit>
+	</address>
+	<address name="SIO_JOYRECV" value="0x4000150" width="4"/>
+	<address name="SIO_JOYSEND" value="0x4000154" width="4"/>
+	<address name="SIO_JOYSTAT" value="0x4000158" width="2">
+		<!-- TODO: bits 1,3,4,5 -->
+	</address>
+</section>

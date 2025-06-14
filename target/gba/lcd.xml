@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="GBA">
+	<comment>LCD MMIO</comment>
+	<address name="LCD_DISPCNT" value="0x4000000" width="4">
+		<enum name="MODE" offset="0" width="3">
+			<comment>Background layer mode</comment>
+			<value name="0" value="0">
+				<comment>Mode 0: four tile layers (0-3)</comment>
+			</value>
+			<value name="1" value="1">
+				<comment>Mode 1: two tile layers (0-1), one affine layer (2)</comment>
+			</value>
+			<value name="2" value="2">
+				<comment>Mode 2: two affine layers (2-3)</comment>
+			</value>
+			<value name="3" value="3">
+				<comment>Mode 3: one 240x160 15-bit bitmap (2)</comment>
+			</value>
+			<value name="4" value="4">
+				<comment>Mode 4: two 240x160 8-bit bitmaps (2)</comment>
+			</value>
+			<value name="5" value="5">
+				<comment>Mode 5: two 160x128 15-bit bitmaps (2)</comment>
+			</value>
+		</enum>
+		<bit name="CGB_MODE" offset="3"></bit>
+		<bit name="ALT_BITMAP" offset="4"><comment>Use second bitmap (modes 4, 5)</comment></bit>
+		<enum name="OBJ_LAYOUT" offset="6" width="1">
+			<value name="1D" value="1"></value>
+			<value name="2D" value="0"></value>
+		</enum>
+		<!-- TODO: bits 5, 7 -->
+		<bit name="BG0_ENABLE" offset="8"><comment>Enable background layer 0</comment></bit>
+		<bit name="BG1_ENABLE" offset="9"><comment>Enable background layer 1</comment></bit>
+		<bit name="BG2_ENABLE" offset="10"><comment>Enable background layer 2</comment></bit>
+		<bit name="BG3_ENABLE" offset="11"><comment>Enable background layer 3</comment></bit>
+		<bit name="OBJ_ENABLE" offset="12"><comment>Enable object layer</comment></bit>
+		<bit name="WIN0_ENABLE" offset="13"><comment>Enable background window 0</comment></bit>
+		<bit name="WIN1_ENABLE" offset="14"><comment>Enable background window 1</comment></bit>
+		<bit name="OBJWIN_ENABLE" offset="15"><comment>Enable object window</comment></bit>
+		<bit name="STEREO_ENABLE" offset="16"><comment>Enable stereoscopic mode</comment></bit>
+	</address>
+	<address name="LCD_DISPSTAT" value="0x4000004" width="2">
+		<bit name="VBLANK" offset="0"></bit>
+		<bit name="HBLANK" offset="1"></bit>
+		<bit name="VCOUNT" offset="2"></bit>
+		<bit name="VBLANK_ENABLE" offset="3"></bit>
+		<bit name="HBLANK_ENABLE" offset="4"></bit>
+		<bit name="VCOUNT_ENABLE" offset="5"></bit>
+		<!-- TODO: bits 8-15 -->
+	</address>
+	<address name="LCD_VCOUNT" value="0x4000006" width="2">
+		<comment>Currently drawn scanline</comment>
+	</address>
+	<addressarray name="LCD_BGCNT" value="0x4000008" width="2" count="4">
+		<bit name="MOSAIC" offset="6"></bit>
+		<enum name="DEPTH" offset="7" width="1">
+			<comment>Tile bit depth; also controls palette count.</comment>
+			<value name="4BPP" value="0">
+				<comment>4 bits per pixel; 16 palettes of 16 colors each.</comment>
+			</value>
+			<value name="8BPP" value="0">
+				<comment>8 bits per pixel; 1 palette of 256 colors.</comment>
+			</value>
+		</enum>
+		<!-- TODO: bits 0-3, 8-12 -->
+		<bit name="AFFINE_WRAP" offset="13"></bit>
+		<enum name="TILE_SIZE" offset="14" width="2">
+			<comment>Tile background layer size, in tiles</comment>
+			<value name="32_32" value="0">
+				<comment>Tile background layer size: 32x32 tiles (256x256 pixels, 2 KiB)</comment>
+			</value>
+			<value name="64_32" value="1">
+				<comment>Tile background layer size: 64x32 tiles (512x256 pixels, 4 KiB)</comment>
+			</value>
+			<value name="32_64" value="2">
+				<comment>Tile background layer size: 32x64 tiles (256x512 pixels, 4 KiB)</comment>
+			</value>
+			<value name="64_64" value="3">
+				<comment>Tile background layer size: 64x64 tiles (512x512 pixels, 8 KiB)</comment>
+			</value>
+		</enum>
+		<enum name="AFFINE_SIZE" offset="14" width="2">
+			<comment>Affine background layer size, in pixels</comment>
+			<value name="256_256" value="0">
+				<comment>Affine background layer size: 16x16 tiles (128x128 pixels, 0.5 KiB)</comment>
+			</value>
+			<value name="512_256" value="1">
+				<comment>Affine background layer size: 32x32 tiles (256x256 pixels, 2 KiB)</comment>
+			</value>
+			<value name="256_512" value="2">
+				<comment>Affine background layer size: 64x64 tiles (512x512 pixels, 8 KiB)</comment>
+			</value>
+			<value name="512_512" value="3">
+				<comment>Affine background layer size: 128x128 tiles (1024x1024 pixels, 32 KiB)</comment>
+			</value>
+		</enum>
+	</addressarray>
+	<address name="LCD_BG0CNT" value="0x4000008" width="2"/>
+	<address name="LCD_BG1CNT" value="0x400000A" width="2"/>
+	<address name="LCD_BG2CNT" value="0x400000C" width="2"/>
+	<address name="LCD_BG3CNT" value="0x400000E" width="2"/>
+	<addressarray name="LCD_BG_XOFS" value="0x4000010" width="2" pitch="4" count="4"/>
+	<addressarray name="LCD_BG_YOFS" value="0x4000012" width="2" pitch="4" count="4"/>
+	<address name="LCD_BG0XOFS" value="0x4000010" width="2"/>
+	<address name="LCD_BG0YOFS" value="0x4000012" width="2"/>
+	<address name="LCD_BG1XOFS" value="0x4000014" width="2"/>
+	<address name="LCD_BG1YOFS" value="0x4000016" width="2"/>
+	<address name="LCD_BG2XOFS" value="0x4000018" width="2"/>
+	<address name="LCD_BG2YOFS" value="0x400001A" width="2"/>
+	<address name="LCD_BG3XOFS" value="0x400001C" width="2"/>
+	<address name="LCD_BG3YOFS" value="0x400001E" width="2"/>
+
+	<address name="LCD_BG2PA" value="0x4000020" width="2"/>
+	<address name="LCD_BG2PB" value="0x4000022" width="2"/>
+	<address name="LCD_BG2PC" value="0x4000024" width="2"/>
+	<address name="LCD_BG2PD" value="0x4000026" width="2"/>
+	<address name="LCD_BG2PX" value="0x4000028" width="4"/>
+	<address name="LCD_BG2PY" value="0x400002C" width="4"/>
+	<address name="LCD_BG3PA" value="0x4000030" width="2"/>
+	<address name="LCD_BG3PB" value="0x4000032" width="2"/>
+	<address name="LCD_BG3PC" value="0x4000034" width="2"/>
+	<address name="LCD_BG3PD" value="0x4000036" width="2"/>
+	<address name="LCD_BG3PX" value="0x4000038" width="4"/>
+	<address name="LCD_BG3PY" value="0x400003C" width="4"/>
+
+	<address name="LCD_WIN0X" value="0x4000040" width="2"/>
+	<address name="LCD_WIN0X1" value="0x4000041" width="1"/>
+	<address name="LCD_WIN0X2" value="0x4000040" width="1"/>
+	<address name="LCD_WIN1X" value="0x4000042" width="2"/>
+	<address name="LCD_WIN1X1" value="0x4000043" width="1"/>
+	<address name="LCD_WIN1X2" value="0x4000042" width="1"/>
+	<address name="LCD_WIN0Y" value="0x4000044" width="2"/>
+	<address name="LCD_WIN0Y1" value="0x4000045" width="1"/>
+	<address name="LCD_WIN0Y2" value="0x4000044" width="1"/>
+	<address name="LCD_WIN1Y" value="0x4000046" width="2"/>
+	<address name="LCD_WIN1Y1" value="0x4000047" width="1"/>
+	<address name="LCD_WIN1Y2" value="0x4000046" width="1"/>
+
+	<address name="LCD_WINCNT" value="0x4000048" width="4">
+		<bit name="BG0_ENABLE" offset="0"></bit>
+		<bit name="BG1_ENABLE" offset="1"></bit>
+		<bit name="BG2_ENABLE" offset="2"></bit>
+		<bit name="BG3_ENABLE" offset="3"></bit>
+		<bit name="OBJ_ENABLE" offset="4"></bit>
+		<bit name="BLEND_ENABLE" offset="5"></bit>
+	</address>
+	<address name="LCD_WININ0CNT" value="0x4000048" width="1"/>
+	<address name="LCD_WININ1CNT" value="0x4000049" width="1"/>
+	<address name="LCD_WINOBJCNT" value="0x400004A" width="1"/>
+	<address name="LCD_WINOUTCNT" value="0x400004B" width="1"/>
+
+	<address name="LCD_MOSAIC" value="0x400004C" width="2"/>
+	<address name="LCD_MOSAICBG" value="0x400004C" width="1"/>
+	<address name="LCD_MOSAICOBJ" value="0x400004D" width="1"/>
+
+	<address name="LCD_BLENDCNT" value="0x4000050" width="2">
+		<!-- TODO -->
+	</address>
+
+	<address name="LCD_BLENDALPHA" value="0x4000052" width="2">
+		<!-- TODO -->
+	</address>
+
+	<address name="LCD_BLENDMUL" value="0x4000054" width="2">
+		<!-- TODO -->
+	</address>
+</section>

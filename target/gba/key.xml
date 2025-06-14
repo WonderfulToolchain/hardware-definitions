@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="GBA">
+	<comment>Keypad MMIO</comment>
+	<address name="KEY_INPUT" value="0x4000130" width="2">
+		<bit name="A" offset="0"/>
+		<bit name="B" offset="1"/>
+		<bit name="SELECT" offset="2"/>
+		<bit name="START" offset="3"/>
+		<bit name="RIGHT" offset="4"/>
+		<bit name="LEFT" offset="5"/>
+		<bit name="UP" offset="6"/>
+		<bit name="DOWN" offset="7"/>
+		<bit name="R" offset="8"/>
+		<bit name="L" offset="9"/>
+	</address>
+	<address name="KEY_IRQ" value="0x4000130" width="2">
+		<bit name="A" offset="0"/>
+		<bit name="B" offset="1"/>
+		<bit name="SELECT" offset="2"/>
+		<bit name="START" offset="3"/>
+		<bit name="RIGHT" offset="4"/>
+		<bit name="LEFT" offset="5"/>
+		<bit name="UP" offset="6"/>
+		<bit name="DOWN" offset="7"/>
+		<bit name="R" offset="8"/>
+		<bit name="L" offset="9"/>
+		<bit name="ENABLE" offset="14"/>
+		<enum name="LOGIC" offset="15" width="1">
+			<comment>Interrupt request condition</comment>
+			<value name="OR" value="0"><comment>Logical OR: Any masked button being pressed requests interrupt</comment></value>
+			<value name="AND" value="1"><comment>Logical AND: All masked buttons being pressed requests interrupt</comment></value>
+		</enum>
+	</address>
+</section>

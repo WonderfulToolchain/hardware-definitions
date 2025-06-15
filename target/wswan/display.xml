@@ -90,12 +90,16 @@ Note that final color translation is applied with a one-line delay; for changing
 	<port name="LCD_CTRL" address="0x14" width="1">
 		<comment>Controls LCD driver functionality.</comment>
 		<enum name="CONTRAST" offset="1" width="1">
-			<value name="LOW" value="0"/>
-			<value name="HIGH" value="1"/>
+			<comment>Control WSC high contrast mode.
+
+This mode works by having the LCD drive two lines at a time with data received from the SoC. The first line of the LCD is driven by the first line from the SoC, then additionally by the second line from the SoC.</comment>
+			<value name="LOW" value="0"><comment>Low contrast (drive one line of the LCD at a time with pixel data).</comment></value>
+			<value name="HIGH" value="1"><comment>High contrast (drive two lines of the LCD at a time with pixel data).</comment></value>
 		</enum>
-		<enum name="SLEEP" offset="0" width="1">
-			<value name="ON" value="0"/>
-			<value name="OFF" value="1"/>
+		<enum name="DISPLAY" offset="0" width="1">
+			<comment>Control whether or not the LCD is displaying graphics. Does not affect the segment area.</comment>
+			<value name="DISABLE" value="0"><comment>Disable graphics display.</comment></value>
+			<value name="ENABLE" value="1"><comment>Enable graphics display.</comment></value>
 		</enum>
 	</port>
 	<port name="LCD_ICON" address="0x15" width="1">

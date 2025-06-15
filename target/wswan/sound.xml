@@ -80,7 +80,7 @@ Note that this refers to the sample rate of each sample in the wavetable, and ne
 			<comment>Enable the LFSR noise generator.</comment>
 		</bit>
 	</port>
-	<port name="SOUND_WAVE_BASE" address="0x04" width="1">
+	<port name="SOUND_WAVE_BASE" address="0x8F" width="1">
 		<comment>Sound wavetable base address.</comment>
 		<code language="c">#define WS_SOUND_WAVE_BASE_ADDR(n) (((unsigned int) (n)) &gt;&gt; 6)</code>
 	</port>

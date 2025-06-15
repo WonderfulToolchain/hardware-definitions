@@ -17,7 +17,7 @@
 
 	<port name="CART_BANK_FLASH" address="0xCE" width="1">
 		<comment>Control ROM/Flash access in RAM bank area.</comment> 
-		<enum offset="1" width="1">
+		<enum offset="0" width="1">
 			<value name="ENABLE" value="1"/>
 			<value name="DISABLE" value="0"/>
 		</enum>

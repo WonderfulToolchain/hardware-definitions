@@ -25,11 +25,18 @@
 		</enum>
 		<bit name="CGB_MODE" offset="3"></bit>
 		<bit name="ALT_BITMAP" offset="4"><comment>Use second bitmap (modes 4, 5)</comment></bit>
+		<bit name="OAM_HBLANK_FREE" offset="5">
+			<comment>Prevent the video hardware from accessing the object attribute memory (OAM) during horizontal blank.
+
+As this option reduces the duration available for reading memory by the video hardware, it also reduces the maximum number of sprites that can be displayed per line.</comment>
+		</bit>
 		<enum name="OBJ_LAYOUT" offset="6" width="1">
 			<value name="1D" value="1"></value>
 			<value name="2D" value="0"></value>
 		</enum>
-		<!-- TODO: bits 5, 7 -->
+		<bit name="FORCE_DISABLE" offset="7" width="1">
+			<comment>Disable all video memory access by the hardware. This will cause all output pixels to be white, but allow free memory access by the CPU.</comment>
+		</bit>
 		<bit name="BG0_ENABLE" offset="8"><comment>Enable background layer 0</comment></bit>
 		<bit name="BG1_ENABLE" offset="9"><comment>Enable background layer 1</comment></bit>
 		<bit name="BG2_ENABLE" offset="10"><comment>Enable background layer 2</comment></bit>
@@ -155,12 +162,31 @@
 	<address name="LCD_MOSAICOBJ" value="0x400004D" width="1"/>
 
 	<address name="LCD_BLENDCNT" value="0x4000050" width="2">
-		<!-- TODO -->
+		<bit name="SRC_BG0" offset="0"></bit>
+		<bit name="SRC_BG1" offset="1"></bit>
+		<bit name="SRC_BG2" offset="2"></bit>
+		<bit name="SRC_BG3" offset="3"></bit>
+		<bit name="SRC_OBJ" offset="4"></bit>
+		<bit name="SRC_BACK" offset="5"></bit>
+		<enum name="MODE" offset="6" width="2">
+			<value name="NONE" value="0"><comment>Disable blending.</comment></value>
+			<value name="ALPHA" value="1"><comment>Mix the source and destination pixel according to BLENDALPHA.</comment></value>
+			<value name="BRIGHTEN" value="2"><comment>Increase the brightness of the source pixel according to BLENDMUL.</comment></value>
+			<value name="DARKEN" value="3"><comment>Decrease the brightness of the source pixel according to BLENDMUL.</comment></value>
+		</enum>
+		<bit name="DST_BG0" offset="8"></bit>
+		<bit name="DST_BG1" offset="9"></bit>
+		<bit name="DST_BG2" offset="10"></bit>
+		<bit name="DST_BG3" offset="11"></bit>
+		<bit name="DST_OBJ" offset="12"></bit>
+		<bit name="DST_BACK" offset="13"></bit>
 	</address>
 
 	<address name="LCD_BLENDALPHA" value="0x4000052" width="2">
 		<!-- TODO -->
 	</address>
+	<address name="LCD_BLENDSRCALPHA" value="0x4000052" width="1"/>
+	<address name="LCD_BLENDDSTALPHA" value="0x4000053" width="1"/>
 
 	<address name="LCD_BLENDMUL" value="0x4000054" width="2">
 		<!-- TODO -->

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<section name="GBA">
+	<comment>Sound MMIO</comment>
+
+	<address name="SOUND_CH1_SWEEP" value="0x4000060" width="1">
+		<!-- TODO -->
+		<enum name="DIR" offset="3" width="1">
+			<value name="UP" value="0"></value>
+			<value name="DOWN" value="1"></value>
+		</enum>
+	</address>
+	<address name="SOUND_CH1_LEN" value="0x4000062" width="1">
+		<!-- TODO -->
+		<enum name="DUTY" offset="6" width="2">
+			<value name="12_5" value="0"></value>
+			<value name="25" value="1"></value>
+			<value name="50" value="2"></value>
+			<value name="75" value="3"></value>
+		</enum>
+	</address>
+	<address name="SOUND_CH1_ENV" value="0x4000063" width="1">
+		<!-- TODO -->
+		<enum name="DIR" offset="3" width="1">
+			<value name="UP" value="0"></value>
+			<value name="DOWN" value="1"></value>
+		</enum>
+	</address>
+	<address name="SOUND_CH1_CNT" value="0x4000064" width="2">
+		<!-- TODO -->
+		<bit name="LENGTH" offset="14"/>
+		<bit name="RESTART" offset="15"/>
+	</address>
+
+	<address name="SOUND_CH2_LEN" value="0x4000068" width="1">
+		<!-- TODO -->
+		<enum name="DUTY" offset="6" width="2">
+			<value name="12_5" value="0"></value>
+			<value name="25" value="1"></value>
+			<value name="50" value="2"></value>
+			<value name="75" value="3"></value>
+		</enum>
+	</address>
+	<address name="SOUND_CH2_ENV" value="0x4000069" width="1">
+		<!-- TODO -->
+		<enum name="DIR" offset="3" width="1">
+			<value name="UP" value="0"></value>
+			<value name="DOWN" value="1"></value>
+		</enum>
+	</address>
+	<address name="SOUND_CH2_CNT" value="0x400006C" width="2">
+		<!-- TODO -->
+		<bit name="LENGTH" offset="14"/>
+		<bit name="RESTART" offset="15"/>
+	</address>
+
+	<address name="SOUND_CH3_ENA" value="0x4000072" width="1">
+		<enum name="BANKS" offset="5" width="1">
+			<value name="ONE" value="0"><comment>Play from selected bank</comment></value>
+			<value name="TWO" value="1"><comment>Play from both banks</comment></value>
+		</enum>
+		<enum name="ACTIVE" offset="6" width="1">
+			<comment>Select the active bank</comment>
+			<value name="0" value="0"><comment>Play (starting from) bank 0</comment></value>
+			<value name="1" value="1"><comment>Play (starting from) bank 1</comment></value>
+		</enum>
+		<bit name="ENABLE" offset="7"/>
+	</address>
+	<address name="SOUND_CH3_LEN" value="0x4000072" width="1">
+		<!-- TODO -->
+	</address>
+	<address name="SOUND_CH3_VOL" value="0x4000073" width="1">
+		<!-- TODO -->
+	</address>
+	<address name="SOUND_CH3_CNT" value="0x4000074" width="2">
+		<!-- TODO -->
+		<bit name="LENGTH" offset="14"/>
+		<bit name="RESTART" offset="15"/>
+	</address>
+
+	<address name="SOUND_CH4_LEN" value="0x4000078" width="1">
+		<!-- TODO -->
+	</address>
+	<address name="SOUND_CH4_ENV" value="0x4000079" width="1">
+		<!-- TODO -->
+		<enum name="DIR" offset="3" width="1">
+			<value name="UP" value="0"></value>
+			<value name="DOWN" value="1"></value>
+		</enum>
+	</address>
+	<address name="SOUND_CH4_CNT" value="0x400007C" width="2">
+		<!-- TODO -->
+		<bit name="LENGTH" offset="14"/>
+		<bit name="RESTART" offset="15"/>
+	</address>
+
+	<addressarray name="SOUND_CH3_WAVE" value="0x4000090" width="1" count="16"/>
+	<addressarray name="SOUND_CH3_WAVE16" value="0x4000090" width="2" count="8"/>
+	<addressarray name="SOUND_CH3_WAVE32" value="0x4000090" width="4" count="4"/>
+
+	<address name="SOUND_FIFOA" value="0x40000A0" width="4"/>
+	<address name="SOUND_FIFOB" value="0x40000A4" width="4"/>
+
+	<address name="SOUND_MVOLCNT" value="0x4000080" width="1">
+		<!-- TODO -->
+	</address>
+	<address name="SOUND_CHNCNT" value="0x4000081" width="1">
+		<bit name="CH1_RIGHT" offset="0"></bit>
+		<bit name="CH2_RIGHT" offset="1"></bit>
+		<bit name="CH3_RIGHT" offset="2"></bit>
+		<bit name="CH4_RIGHT" offset="3"></bit>
+		<bit name="CH1_LEFT" offset="4"></bit>
+		<bit name="CH2_LEFT" offset="5"></bit>
+		<bit name="CH3_LEFT" offset="6"></bit>
+		<bit name="CH4_LEFT" offset="7"></bit>
+	</address>
+	<address name="SOUND_VOLCNT" value="0x4000082" width="1">
+		<!-- TODO -->
+	</address>
+	<address name="SOUND_DMACNT" value="0x4000083" width="1">
+		<bit name="A_RIGHT" offset="0"/>
+		<bit name="A_LEFT" offset="1"/>
+		<enum name="A_TIMER" offset="2" width="1">
+			<value name="0" value="0"/>
+			<value name="1" value="1"/>
+		</enum>
+		<bit name="A_RESET" offset="3"/>
+		<bit name="B_RIGHT" offset="4"/>
+		<bit name="B_LEFT" offset="5"/>
+		<enum name="B_TIMER" offset="6" width="1">
+			<value name="0" value="0"/>
+			<value name="1" value="1"/>
+		</enum>
+		<bit name="B_RESET" offset="7"/>
+	</address>
+	<address name="SOUND_MCNT" value="0x4000084" width="1">
+		<bit name="CH1_ACTIVE" offset="0"></bit>
+		<bit name="CH2_ACTIVE" offset="1"></bit>
+		<bit name="CH3_ACTIVE" offset="2"></bit>
+		<bit name="CH4_ACTIVE" offset="3"></bit>
+		<bit name="DMA_ENABLE" offset="7"></bit>
+	</address>
+	<address name="SOUND_PWMCNT" value="0x4000088" width="2">
+		<!-- TODO -->
+		<enum name="FREQ" offset="14" width="2">
+			<comment>Output frequency; controls the effective resolution.</comment>
+			<value name="32KHZ" value="0"><comment>32.768 KHz; converts each PCM sample into 512 PWM samples for an effective 9-bit resolution.</comment></value>
+			<value name="65KHZ" value="1"><comment>65.536 KHz; converts each PCM sample into 256 PWM samples for an effective 8-bit resolution.</comment></value>
+			<value name="131KHZ" value="2"><comment>131.072 KHz; converts each PCM sample into 128 PWM samples for an effective 7-bit resolution.</comment></value>
+			<value name="262KHZ" value="3"><comment>262.144 KHz; converts each PCM sample into 64 PWM samples for an effective 6-bit resolution.</comment></value>
+		</enum>
+	</address>
+</section>

@@ -47,7 +47,14 @@
 				<comment>Use 2 MHz internal clock</comment>
 			</value>
 		</enum>
-		<!-- TODO: bits 2,3,7 -->
+		<bit name="SPI_INPUT" offset="2">
+			<comment>State of the serial input pin</comment>
+		</bit>
+		<enum name="SPI_OUTPUT_POLARITY" offset="3" width="1">
+			<value name="LOW" value="0"></value>
+			<value name="HIGH" value="1"></value>
+		</enum>
+		<bit name="SPI_START" offset="7"></bit>
 	
 		<enum name="MULTI_BAUD" offset="0" width="2">
 			<value name="9600" value="0">
@@ -65,7 +72,7 @@
 		</enum>
 		<!-- TODO: bits 2-5 -->
 		<bit name="MULTI_ERROR" offset="6"></bit>
-		<!-- TODO: bit 7 -->
+		<bit name="MULTI_START" offset="7"></bit>
 		
 		<enum name="UART_BAUD" offset="0" width="2">
 			<value name="9600" value="0">

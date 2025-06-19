@@ -223,7 +223,7 @@ def process_macro_tree(em, f, name, state):
         elif f.nodeName == "enum":
             offset = state["offset"]
             width = int(attr_value(f, "width"), 0)
-            em.emit_value(f"{name}_SHIFT", offset)
+            em.emit_value(f"{name}_SHIFT", offset, get_comment_lines(f))
             em.emit_value(f"{name}_MASK", ((1 << width) - 1) << offset, hex=True)
         elif f.nodeName == "value":
             offset = state["offset"]
